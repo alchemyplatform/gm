@@ -2,8 +2,14 @@ import { useState } from 'react';
 import { ethers } from 'ethers';
 import ContractJSON from './artifacts/contracts/Greeter.sol/Greeter.json';
 import './App.css';
+require('dotenv').config();
+
+const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 
 function App() {
+  // MetaMask injects the ethereum object into the webpage.
+	const ethereum = window.ethereum;
+
   const [gm, setGm] = useState();
 
   async function requestAccount() {
@@ -36,9 +42,16 @@ function App() {
     }
   }
 
+  requestAccount();
+
+  console.log("gm", gm);
+  const headerClass = gm ? "App-header-gm" : "App-header";
+
   return (
     <div className="App">
-      <header className="App-header">
+      <header className={headerClass}>
+        <button onClick={fetchGm}>GM?</button>
+        <button onClick={setGmButton}>GM</button>
       </header>
     </div>
   );
