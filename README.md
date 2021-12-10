@@ -1,4 +1,4 @@
-Prerequesites:
+Prerequisites:
 
 - npm (recommended: nvm)
 - hardhat
