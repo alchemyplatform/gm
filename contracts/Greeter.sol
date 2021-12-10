@@ -4,19 +4,20 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract Greeter {
-    string private greeting;
+    bool private gm;
 
-    constructor(string memory _greeting) {
-        console.log("Deploying a Greeter with greeting:", _greeting);
-        greeting = _greeting;
+    constructor() {
+        gm = true;
+        console.log("Deploying a Greeter with gm:", gm);
     }
 
-    function greet() public view returns (string memory) {
-        return greeting;
+    function isGm() public view returns (bool) {
+        console.log("gm: ", gm);
+        return gm;
     }
 
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
+    function toggleGm() public {
+        console.log("Changing greeting from '%s' to '%s'", gm, !gm);
+        gm = !gm;
     }
 }
