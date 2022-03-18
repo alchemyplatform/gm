@@ -14,8 +14,6 @@ nvm alias default 16
 
 `npx create-react-app gm`
 
-- delete yarn.lock since we're using npm instead of yarn
-
 1. Create hardhat project:
 
 `npx hardhat`
