@@ -1,14 +1,28 @@
-Prerequesites:
+Prerequisites:
+
+Verify you have node js
+
+```
+node --version
+```
+
+If not, install [node js ](https://nodejs.org)
 
 - npm (recommended: nvm)
 - hardhat
-
+ 
+ Apple/Linux install:
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+source ~/.nvm/nvm.sh
 nvm install 16
 nvm use 16
 nvm alias default 16
 ```
+Windows install:
+
+[nvm for windows](https://github.com/coreybutler/nvm-windows/releases/download/1.1.9/nvm-setup.zip)
+Restart may be required.
 
 1. Create react project:
 
@@ -246,3 +260,40 @@ export default App;
 ```
 
 1. Look at the dashboard and see all your requests!!
+
+
+## Troubleshooting
+
+On windows if you recieve the error:
+
+**Module not found: Error: Can't resolve 'fs' in node_modules\dotenv\lib'**
+
+Then follow these steps:
+
+In **harhat.config.js** and **App.js** ***remove*** the line:
+
+```
+require('dotenv').config();
+```
+
+And install 
+
+```
+npm install dotenv-webpack --save-dev
+```
+Create a new file called **webpack.config.js** and put it at the same level as your **.env** file. And put this inside:
+
+```
+// webpack.config.js
+const Dotenv = require('dotenv-webpack');
+
+module.exports = {
+  
+  plugins: [
+    new Dotenv()
+  ]
+  
+};
+```
+
+Then run ```npm start``` the error should be resolved. 
